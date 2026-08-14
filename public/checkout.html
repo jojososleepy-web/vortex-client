@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — Vortex Premium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body class="account-page">
+
+<nav class="navbar" id="navbar">
+  <a href="/" class="nav-logo">
+    <span class="logo-icon">⚡</span>
+    <span>VORTEX</span>
+  </a>
+  <div class="nav-actions">
+    <a href="/" class="btn btn-ghost btn-sm">← Back</a>
+  </div>
+</nav>
+
+<div class="account-hero-bar">
+  <div class="container">
+    <div class="account-header">
+      <div class="account-avatar">👑</div>
+      <div class="account-info">
+        <h1>Get Vortex Premium</h1>
+        <p>Choose your plan and payment method</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div style="max-width:800px;margin:4rem auto;padding:0 2rem">
+    
+    <!-- Plan Selection -->
+    <div style="margin-bottom:3rem">
+      <h2 style="font-size:1.5rem;margin-bottom:1.5rem;text-align:center">Select Your Plan</h2>
+      
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem">
+        <!-- Monthly Plan -->
+        <div class="plan-card" data-plan="monthly" data-price="9.99">
+          <div class="plan-header">
+            <h3>Monthly</h3>
+            <div class="plan-price">
+              <span class="price-amount">$9.99</span>
+              <span class="price-period">/month</span>
+            </div>
+          </div>
+          <ul class="plan-features">
+            <li>✅ All 6 Premium Modules</li>
+            <li>✅ InfiniteAura, AntiHits</li>
+            <li>✅ StashFinder, AutoMine</li>
+            <li>✅ AutoArmor, AutoTotem</li>
+            <li>✅ Cancel anytime</li>
+          </ul>
+          <button class="btn btn-outline btn-full select-plan-btn">Select Monthly</button>
+        </div>
+
+        <!-- Lifetime Plan -->
+        <div class="plan-card plan-recommended" data-plan="lifetime" data-price="29.99">
+          <div class="plan-badge">BEST VALUE</div>
+          <div class="plan-header">
+            <h3>Lifetime</h3>
+            <div class="plan-price">
+              <span class="price-amount gold-text">$29.99</span>
+              <span class="price-period">once</span>
+            </div>
+          </div>
+          <ul class="plan-features">
+            <li>✅ All 6 Premium Modules</li>
+            <li>✅ Forever Access</li>
+            <li>✅ One-time Payment</li>
+            <li>✅ Save 70%</li>
+            <li>✅ No Recurring Charges</li>
+          </ul>
+          <button class="btn btn-gold btn-full select-plan-btn">Select Lifetime</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment Section (Hidden until plan selected) -->
+    <div id="payment-section" style="display:none">
+      <h2 style="font-size:1.5rem;margin-bottom:1rem;text-align:center">Payment Details</h2>
+      <p style="text-align:center;color:var(--text-secondary);margin-bottom:2rem">
+        Selected: <strong id="selected-plan-name">—</strong> - 
+        <strong id="selected-plan-price" style="color:var(--gold)">$0.00</strong>
+      </p>
+
+      <div class="payment-card">
+        <!-- Stripe Payment Element (supports all payment methods) -->
+        <div id="payment-element">
+          <!-- Stripe.js injects the Payment Element here -->
+        </div>
+
+        <div id="payment-message" class="hidden" style="margin-top:1rem"></div>
+
+        <button id="submit-payment" class="btn btn-gold btn-full btn-lg" style="margin-top:2rem">
+          <span id="button-text">Pay Now</span>
+          <span class="spinner" id="spinner" style="display:none"></span>
+        </button>
+
+        <div style="margin-top:1.5rem;padding:1rem;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);border-radius:var(--radius-sm);font-size:0.85rem;color:var(--text-secondary)">
+          <strong style="color:var(--text-primary)">Secure Payment</strong><br>
+          Your payment is processed securely by Stripe. We support:
+          <div style="display:flex;gap:0.5rem;margin-top:0.5rem;flex-wrap:wrap">
+            <span style="background:var(--bg-card);padding:4px 10px;border-radius:4px;font-size:0.75rem">💳 All Cards</span>
+            <span style="background:var(--bg-card);padding:4px 10px;border-radius:4px;font-size:0.75rem">🍎 Apple Pay</span>
+            <span style="background:var(--bg-card);padding:4px 10px;border-radius:4px;font-size:0.75rem">💵 Cash App</span>
+            <span style="background:var(--bg-card);padding:4px 10px;border-radius:4px;font-size:0.75rem">🔒 Secure</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stripe Not Configured -->
+    <div id="stripe-not-configured" style="text-align:center;padding:3rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);margin-top:2rem">
+      <div style="font-size:3rem;margin-bottom:1rem">💳</div>
+      <h3 style="margin-bottom:1rem">Stripe Payment Setup Required</h3>
+      <p style="color:var(--text-secondary);margin-bottom:1.5rem;max-width:500px;margin-left:auto;margin-right:auto">
+        To accept payments, you need to configure your Stripe account and add your publishable key to the <code>.env</code> file.
+      </p>
+      <p style="font-size:0.85rem;color:var(--text-muted)">
+        See <code>STRIPE-SETUP.md</code> for instructions
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<style>
+.plan-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: var(--transition);
+  position: relative;
+  cursor: pointer;
+}
+
+.plan-card:hover {
+  border-color: var(--border);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+
+.plan-card.plan-recommended {
+  border-color: rgba(245,158,11,0.3);
+  background: linear-gradient(135deg, rgba(245,158,11,0.05), var(--bg-card));
+}
+
+.plan-card.selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.plan-recommended.selected {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px var(--gold);
+}
+
+.plan-badge {
+  position: absolute;
+  top: -10px;
+  right: 1.5rem;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #000;
+  padding: 4px 14px;
+  border-radius: 99px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.plan-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.plan-header h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.plan-price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.price-amount {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #a78bfa, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.plan-recommended .price-amount {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.price-period {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.plan-features {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.plan-features li {
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.payment-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#payment-element {
+  margin-bottom: 1.5rem;
+}
+
+.hidden {
+  display: none;
+}
+</style>
+
+<script>
+// Stripe Configuration
+const STRIPE_PUBLISHABLE_KEY = 'pk_test_YOUR_PUBLISHABLE_KEY'; // Replace with your Stripe publishable key
+
+let stripe, elements, selectedPlan = null;
+
+// Check if Stripe is configured
+if (STRIPE_PUBLISHABLE_KEY.includes('YOUR_PUBLISHABLE_KEY')) {
+  document.getElementById('stripe-not-configured').style.display = 'block';
+  document.querySelectorAll('.select-plan-btn').forEach(btn => btn.disabled = true);
+} else {
+  document.getElementById('stripe-not-configured').style.display = 'none';
+  stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+}
+
+// Plan selection
+document.querySelectorAll('.plan-card').forEach(card => {
+  card.addEventListener('click', function() {
+    selectPlan(this);
+  });
+});
+
+document.querySelectorAll('.select-plan-btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    selectPlan(this.closest('.plan-card'));
+  });
+});
+
+async function selectPlan(card) {
+  if (!stripe) return;
+
+  // Update UI
+  document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+
+  selectedPlan = {
+    type: card.dataset.plan,
+    price: card.dataset.price
+  };
+
+  document.getElementById('selected-plan-name').textContent = 
+    selectedPlan.type.charAt(0).toUpperCase() + selectedPlan.type.slice(1);
+  document.getElementById('selected-plan-price').textContent = `$${selectedPlan.price}`;
+
+  // Show payment section
+  document.getElementById('payment-section').style.display = 'block';
+  document.getElementById('payment-section').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+  // Initialize Stripe Payment Element
+  await initializeStripePayment();
+}
+
+async function initializeStripePayment() {
+  try {
+    // Create Payment Intent on server
+    const response = await fetch('/api/create-payment-intent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        plan: selectedPlan.type,
+        amount: Math.round(parseFloat(selectedPlan.price) * 100) // Convert to cents
+      })
+    });
+
+    const { clientSecret } = await response.json();
+
+    // Create Payment Element
+    elements = stripe.elements({ clientSecret });
+    const paymentElement = elements.create('payment', {
+      layout: 'tabs',
+      defaultValues: {
+        billingDetails: {
+          // Pre-fill if user is logged in
+        }
+      }
+    });
+    
+    // Clear and mount
+    document.getElementById('payment-element').innerHTML = '';
+    paymentElement.mount('#payment-element');
+
+  } catch (error) {
+    showMessage('Error initializing payment. Please refresh and try again.');
+    console.error(error);
+  }
+}
+
+// Handle payment submission
+document.getElementById('submit-payment').addEventListener('click', handleSubmit);
+
+async function handleSubmit(e) {
+  e.preventDefault();
+  
+  if (!stripe || !elements) return;
+
+  setLoading(true);
+
+  const { error } = await stripe.confirmPayment({
+    elements,
+    confirmParams: {
+      return_url: window.location.origin + '/payment-success',
+    },
+  });
+
+  if (error) {
+    showMessage(error.message);
+    setLoading(false);
+  }
+}
+
+function showMessage(messageText) {
+  const messageContainer = document.getElementById('payment-message');
+  messageContainer.classList.remove('hidden');
+  messageContainer.textContent = messageText;
+  setTimeout(() => {
+    messageContainer.classList.add('hidden');
+    messageContainer.textContent = '';
+  }, 5000);
+}
+
+function setLoading(isLoading) {
+  const button = document.getElementById('submit-payment');
+  const spinner = document.getElementById('spinner');
+  const buttonText = document.getElementById('button-text');
+  
+  if (isLoading) {
+    button.disabled = true;
+    spinner.style.display = 'inline-block';
+    buttonText.textContent = 'Processing...';
+  } else {
+    button.disabled = false;
+    spinner.style.display = 'none';
+    buttonText.textContent = 'Pay Now';
+  }
+}
+</script>
+
+</body>
+</html>

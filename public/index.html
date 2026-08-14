@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vortex Client — Minecraft Bedrock Client</title>
+  <meta name="description" content="Vortex is the ultimate Minecraft Bedrock client. Combat, movement, visual, and utility features with Microsoft authentication and proxy support." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<!-- ═══════════════════ NAVBAR ═══════════════════ -->
+<nav class="navbar" id="navbar">
+  <a href="/" class="nav-logo">
+    <span class="logo-icon">⚡</span>
+    <span>VORTEX</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#premium">Premium</a></li>
+    <li><a href="#commands">Commands</a></li>
+    <li><a href="/account">Account</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="/account" class="btn btn-outline btn-sm" id="nav-account-btn">Account</a>
+    <a href="/auth/login" class="btn btn-primary btn-sm" id="nav-login-btn">
+      <svg class="ms-logo" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="9" height="9" fill="#f25022"/>
+        <rect x="11" y="1" width="9" height="9" fill="#7fba00"/>
+        <rect x="1" y="11" width="9" height="9" fill="#00a4ef"/>
+        <rect x="11" y="11" width="9" height="9" fill="#ffb900"/>
+      </svg>
+      Connect Microsoft
+    </a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile nav -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#home">Home</a>
+  <a href="#features">Features</a>
+  <a href="#premium">Premium</a>
+  <a href="#commands">Commands</a>
+  <a href="/account">Account</a>
+  <a href="#faq">FAQ</a>
+  <div class="mobile-nav-actions">
+    <a href="/auth/login" class="btn btn-primary btn-full">
+      <svg class="ms-logo" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px">
+        <rect x="1" y="1" width="9" height="9" fill="#f25022"/>
+        <rect x="11" y="1" width="9" height="9" fill="#7fba00"/>
+        <rect x="1" y="11" width="9" height="9" fill="#00a4ef"/>
+        <rect x="11" y="11" width="9" height="9" fill="#ffb900"/>
+      </svg>
+      Connect Microsoft
+    </a>
+  </div>
+</div>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="hero-grid"></div>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="dot"></span>
+        Minecraft Bedrock Client
+      </div>
+      <h1 class="hero-title">
+        <span class="word-vortex">VORTEX</span><br />CLIENT
+      </h1>
+      <p class="hero-sub">
+        The ultimate Minecraft Bedrock client. Featuring combat, movement, visual, utility, and full HUD customization — all connected through Vortex Proxy.
+      </p>
+      <div class="hero-actions">
+        <a href="/auth/login" class="btn btn-primary btn-lg" id="hero-login-btn">
+          <svg class="ms-logo" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px">
+            <rect x="1" y="1" width="9" height="9" fill="#f25022"/>
+            <rect x="11" y="1" width="9" height="9" fill="#7fba00"/>
+            <rect x="1" y="11" width="9" height="9" fill="#00a4ef"/>
+            <rect x="11" y="11" width="9" height="9" fill="#ffb900"/>
+          </svg>
+          Connect Microsoft
+        </a>
+        <button class="btn btn-outline btn-lg" id="demo-login-btn">🎮 Demo Login</button>
+        <a href="#features" class="btn btn-ghost btn-lg">View Features</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat-item">
+          <div class="hero-stat-value">38+</div>
+          <div class="hero-stat-label">Modules</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-value">5</div>
+          <div class="hero-stat-label">Categories</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-value">6</div>
+          <div class="hero-stat-label">Premium Features</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-value">BEDROCK</div>
+          <div class="hero-stat-label">Platform</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FEATURE PREVIEWS ═══════════════════ -->
+<section class="feature-previews">
+  <div class="container">
+    <div class="preview-grid">
+      <div class="preview-card">
+        <span class="preview-icon">⚔️</span>
+        <h3>Combat</h3>
+        <p>Killaura, Aimbot, Reach, AutoCrit and more for dominating in any fight.</p>
+      </div>
+      <div class="preview-card">
+        <span class="preview-icon">🏃</span>
+        <h3>Movement</h3>
+        <p>Speed, Fly, Jesus, Spider — move freely across any terrain.</p>
+      </div>
+      <div class="preview-card">
+        <span class="preview-icon">👁️</span>
+        <h3>Visual</h3>
+        <p>ESP, Xray, FullBright, Tracers and full entity radar.</p>
+      </div>
+      <div class="preview-card">
+        <span class="preview-icon">🧰</span>
+        <h3>Utility</h3>
+        <p>TPMine, AutoEat, ChestStealer, AutoLog and more quality-of-life tools.</p>
+      </div>
+      <div class="preview-card">
+        <span class="preview-icon">🖥️</span>
+        <h3>HUD & Client</h3>
+        <p>ClickGUI, HUD Editor, Keystrokes, CPS/FPS counters and ArrayList.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ FEATURES ═══════════════════ -->
+<section class="section features-section" id="features">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">⚡ Modules</span>
+      <h2>Everything You Need</h2>
+      <p>38+ modules across five categories. Toggle them on or off — locked modules require Vortex Premium.</p>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="category-tabs">
+      <button class="cat-tab active" data-cat="combat">⚔️ Combat</button>
+      <button class="cat-tab" data-cat="movement">🏃 Movement</button>
+      <button class="cat-tab" data-cat="visual">👁️ Visual</button>
+      <button class="cat-tab" data-cat="utility">🧰 Utility</button>
+      <button class="cat-tab" data-cat="client">🖥️ Client / HUD</button>
+      <button class="cat-tab" data-cat="premium-tab">👑 Premium</button>
+    </div>
+
+    <!-- Combat -->
+    <div class="category-panel active" id="panel-combat">
+      <div class="modules-grid">
+        <div class="module-card" data-module="killaura">
+          <div class="module-info">
+            <div class="module-name">Killaura</div>
+            <div class="module-desc">Automatically attacks nearby targets.</div>
+          </div>
+          <div class="module-icon">⚔️</div>
+        </div>
+        <div class="module-card" data-module="fly">
+          <div class="module-info">
+            <div class="module-name">Fly</div>
+            <div class="module-desc">Allows free movement through the air.</div>
+          </div>
+          <div class="module-icon">🚁</div>
+        </div>
+        <div class="module-card" data-module="aimbot">
+          <div class="module-info">
+            <div class="module-name">Aimbot</div>
+            <div class="module-desc">Assists aiming toward targets automatically.</div>
+          </div>
+          <div class="module-icon">🎯</div>
+        </div>
+        <div class="module-card" data-module="reach">
+          <div class="module-info">
+            <div class="module-name">Reach</div>
+            <div class="module-desc">Extends your attack range beyond normal limits.</div>
+          </div>
+          <div class="module-toggle" data-toggle="reach"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="fastest">
+          <div class="module-info">
+            <div class="module-name">Fastest</div>
+            <div class="module-desc">Optimizes attack timing for maximum DPS.</div>
+          </div>
+          <div class="module-toggle" data-toggle="fastest"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="hitbox">
+          <div class="module-info">
+            <div class="module-name">Hitbox</div>
+            <div class="module-desc">Makes target hitboxes easier to register hits on.</div>
+          </div>
+          <div class="module-toggle" data-toggle="hitbox"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="autocrit">
+          <div class="module-info">
+            <div class="module-name">AutoCrit</div>
+            <div class="module-desc">Automatically performs critical hits on attacks.</div>
+          </div>
+          <div class="module-toggle" data-toggle="autocrit"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="triggerbot">
+          <div class="module-info">
+            <div class="module-name">TriggerBot</div>
+            <div class="module-desc">Automatically attacks when your crosshair is on a target.</div>
+          </div>
+          <div class="module-toggle" data-toggle="triggerbot"><div class="toggle-knob"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Movement -->
+    <div class="category-panel" id="panel-movement">
+      <div class="modules-grid">
+        <div class="module-card" data-module="speed">
+          <div class="module-info">
+            <div class="module-name">Speed</div>
+            <div class="module-desc">Increases your movement speed.</div>
+          </div>
+          <div class="module-toggle" data-toggle="speed"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="longjump">
+          <div class="module-info">
+            <div class="module-name">LongJump</div>
+            <div class="module-desc">Allows much longer horizontal jumps.</div>
+          </div>
+          <div class="module-toggle" data-toggle="longjump"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="jesus">
+          <div class="module-info">
+            <div class="module-name">Jesus</div>
+            <div class="module-desc">Allows you to walk across water surfaces.</div>
+          </div>
+          <div class="module-toggle" data-toggle="jesus"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="highjump">
+          <div class="module-info">
+            <div class="module-name">HighJump</div>
+            <div class="module-desc">Increases your jump height significantly.</div>
+          </div>
+          <div class="module-toggle" data-toggle="highjump"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="spider">
+          <div class="module-info">
+            <div class="module-name">Spider</div>
+            <div class="module-desc">Allows climbing up walls like a spider.</div>
+          </div>
+          <div class="module-toggle" data-toggle="spider"><div class="toggle-knob"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual -->
+    <div class="category-panel" id="panel-visual">
+      <div class="modules-grid">
+        <div class="module-card" data-module="esp">
+          <div class="module-info">
+            <div class="module-name">ESP</div>
+            <div class="module-desc">Highlights players and entities through walls.</div>
+          </div>
+          <div class="module-toggle" data-toggle="esp"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="xray">
+          <div class="module-info">
+            <div class="module-name">Xray</div>
+            <div class="module-desc">Makes selected blocks visible through terrain.</div>
+          </div>
+          <div class="module-toggle" data-toggle="xray"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="fullbright">
+          <div class="module-info">
+            <div class="module-name">FullBright</div>
+            <div class="module-desc">Fully brightens dark areas and caves.</div>
+          </div>
+          <div class="module-toggle" data-toggle="fullbright"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="nametags">
+          <div class="module-info">
+            <div class="module-name">NameTags</div>
+            <div class="module-desc">Displays enhanced player and entity information.</div>
+          </div>
+          <div class="module-toggle" data-toggle="nametags"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="tracer">
+          <div class="module-info">
+            <div class="module-name">Tracer</div>
+            <div class="module-desc">Draws lines from your screen toward targets.</div>
+          </div>
+          <div class="module-toggle" data-toggle="tracer"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="itemesp">
+          <div class="module-info">
+            <div class="module-name">ItemESP</div>
+            <div class="module-desc">Highlights dropped items on the ground.</div>
+          </div>
+          <div class="module-toggle" data-toggle="itemesp"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="mobesp">
+          <div class="module-info">
+            <div class="module-name">MobESP</div>
+            <div class="module-desc">Highlights all nearby mobs through terrain.</div>
+          </div>
+          <div class="module-toggle" data-toggle="mobesp"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="chestesp">
+          <div class="module-info">
+            <div class="module-name">ChestESP</div>
+            <div class="module-desc">Highlights chests and other storage containers.</div>
+          </div>
+          <div class="module-toggle" data-toggle="chestesp"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="storageesp">
+          <div class="module-info">
+            <div class="module-name">StorageESP</div>
+            <div class="module-desc">Highlights all storage blocks nearby.</div>
+          </div>
+          <div class="module-toggle" data-toggle="storageesp"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="entityradar">
+          <div class="module-info">
+            <div class="module-name">EntityRadar</div>
+            <div class="module-desc">Displays nearby entities on a minimap radar.</div>
+          </div>
+          <div class="module-toggle" data-toggle="entityradar"><div class="toggle-knob"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Utility -->
+    <div class="category-panel" id="panel-utility">
+      <div class="modules-grid">
+        <div class="module-card" data-module="disabler">
+          <div class="module-info">
+            <div class="module-name">Disabler</div>
+            <div class="module-desc">Attempts to bypass certain server anti-cheat checks.</div>
+          </div>
+          <div class="module-toggle" data-toggle="disabler"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="autolog">
+          <div class="module-info">
+            <div class="module-name">AutoLog</div>
+            <div class="module-desc">Automatically disconnects under configured conditions.</div>
+          </div>
+          <div class="module-toggle" data-toggle="autolog"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="noclip">
+          <div class="module-info">
+            <div class="module-name">Noclip</div>
+            <div class="module-desc">Allows movement through solid blocks.</div>
+          </div>
+          <div class="module-toggle" data-toggle="noclip"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="tp">
+          <div class="module-info">
+            <div class="module-name">TP</div>
+            <div class="module-desc">Teleports to a selected location or target.</div>
+          </div>
+          <div class="module-toggle" data-toggle="tp"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="tpmine">
+          <div class="module-info">
+            <div class="module-name">TPMine</div>
+            <div class="module-desc">Crouching teleports you to a selected ore type. Ores only.</div>
+          </div>
+          <div class="module-toggle" data-toggle="tpmine"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="autoeat">
+          <div class="module-info">
+            <div class="module-name">AutoEat</div>
+            <div class="module-desc">Automatically eats when your hunger drops low.</div>
+          </div>
+          <div class="module-toggle" data-toggle="autoeat"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="autoswitch">
+          <div class="module-info">
+            <div class="module-name">AutoSwitch</div>
+            <div class="module-desc">Automatically switches to the best item in your hotbar.</div>
+          </div>
+          <div class="module-toggle" data-toggle="autoswitch"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="autochest">
+          <div class="module-info">
+            <div class="module-name">AutoChest</div>
+            <div class="module-desc">Automatically interacts with nearby chests.</div>
+          </div>
+          <div class="module-toggle" data-toggle="autochest"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="cheststealer">
+          <div class="module-info">
+            <div class="module-name">ChestStealer</div>
+            <div class="module-desc">Quickly takes all selected items from open chests.</div>
+          </div>
+          <div class="module-toggle" data-toggle="cheststealer"><div class="toggle-knob"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Client / HUD -->
+    <div class="category-panel" id="panel-client">
+      <div class="modules-grid">
+        <div class="module-card" data-module="clickgui">
+          <div class="module-info">
+            <div class="module-name">ClickGUI</div>
+            <div class="module-desc">In-game GUI for toggling and configuring all modules.</div>
+          </div>
+          <div class="module-toggle" data-toggle="clickgui"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="hudeditor">
+          <div class="module-info">
+            <div class="module-name">HUD Editor</div>
+            <div class="module-desc">Drag-and-drop editor for your in-game HUD layout.</div>
+          </div>
+          <div class="module-toggle" data-toggle="hudeditor"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="keystrokes">
+          <div class="module-info">
+            <div class="module-name">Keystrokes</div>
+            <div class="module-desc">Displays a live keystroke visualization on your HUD.</div>
+          </div>
+          <div class="module-toggle" data-toggle="keystrokes"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="cpscounter">
+          <div class="module-info">
+            <div class="module-name">CPS Counter</div>
+            <div class="module-desc">Displays your real-time clicks per second.</div>
+          </div>
+          <div class="module-toggle" data-toggle="cpscounter"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="fpscounter">
+          <div class="module-info">
+            <div class="module-name">FPS Counter</div>
+            <div class="module-desc">Shows your current frames per second in the HUD.</div>
+          </div>
+          <div class="module-toggle" data-toggle="fpscounter"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="coordinates">
+          <div class="module-info">
+            <div class="module-name">Coordinates</div>
+            <div class="module-desc">Displays your current X, Y, Z coordinates on screen.</div>
+          </div>
+          <div class="module-toggle" data-toggle="coordinates"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="armorhud">
+          <div class="module-info">
+            <div class="module-name">ArmorHUD</div>
+            <div class="module-desc">Displays your equipped armor and durability.</div>
+          </div>
+          <div class="module-toggle" data-toggle="armorhud"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="potionhud">
+          <div class="module-info">
+            <div class="module-name">PotionHUD</div>
+            <div class="module-desc">Displays your active potion effects and duration.</div>
+          </div>
+          <div class="module-toggle" data-toggle="potionhud"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="arraylist">
+          <div class="module-info">
+            <div class="module-name">ArrayList</div>
+            <div class="module-desc">Shows a live list of all currently enabled modules.</div>
+          </div>
+          <div class="module-toggle" data-toggle="arraylist"><div class="toggle-knob"></div></div>
+        </div>
+        <div class="module-card" data-module="configmanager">
+          <div class="module-info">
+            <div class="module-name">Config Manager</div>
+            <div class="module-desc">Save, load, and manage your Vortex module configs.</div>
+          </div>
+          <div class="module-toggle" data-toggle="configmanager"><div class="toggle-knob"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Premium tab -->
+    <div class="category-panel" id="panel-premium-tab">
+      <div class="modules-grid">
+        <div class="module-card premium-card" data-module="infiniteaura" data-premium="true">
+          <div class="module-info">
+            <div class="module-name">InfiniteAura <span class="badge-premium">👑 Premium</span></div>
+            <div class="module-desc">Extended unlimited killaura range with no limits.</div>
+          </div>
+          <div class="lock-icon">🔒</div>
+        </div>
+        <div class="module-card premium-card" data-module="antihits" data-premium="true">
+          <div class="module-info">
+            <div class="module-name">AntiHits <span class="badge-premium">👑 Premium</span></div>
+            <div class="module-desc">Reduces or negates incoming damage from players.</div>
+          </div>
+          <div class="lock-icon">🔒</div>
+        </div>
+        <div class="module-card premium-card" data-module="stashfinder" data-premium="true">
+          <div class="module-info">
+            <div class="module-name">StashFinder <span class="badge-premium">👑 Premium</span></div>
+            <div class="module-desc">Scans and locates hidden stashes and bases nearby.</div>
+          </div>
+          <div class="lock-icon">🔒</div>
+        </div>
+        <div class="module-card premium-card" data-module="automine" data-premium="true">
+          <div class="module-info">
+            <div class="module-name">AutoMine <span class="badge-premium">👑 Premium</span></div>
+            <div class="module-desc">Automatically mines blocks at the configured target location.</div>
+          </div>
+          <div class="lock-icon">🔒</div>
+        </div>
+        <div class="module-card premium-card" data-module="autoarmor" data-premium="true">
+          <div class="module-info">
+            <div class="module-name">AutoArmor <span class="badge-premium">👑 Premium</span></div>
+            <div class="module-desc">Automatically equips the best available armor from inventory.</div>
+          </div>
+          <div class="lock-icon">🔒</div>
+        </div>
+        <div class="module-card premium-card" data-module="autototem" data-premium="true">
+          <div class="module-info">
+            <div class="module-name">AutoTotem <span class="badge-premium">👑 Premium</span></div>
+            <div class="module-desc">Automatically holds a totem of undying when health is critical.</div>
+          </div>
+          <div class="lock-icon">🔒</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ PREMIUM ═══════════════════ -->
+<section class="section premium-section" id="premium">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">👑 Premium</span>
+      <h2>Unlock <span class="gold-text">Vortex Premium</span></h2>
+      <p>Take Vortex further. Get access to six exclusive modules available only to Premium members.</p>
+    </div>
+
+    <div class="premium-card-main">
+      <div class="premium-header">
+        <div class="premium-icon-big">👑</div>
+        <div>
+          <h2 class="gold-text">Vortex Premium</h2>
+          <p>Unlock all six exclusive Premium modules with a single purchase.</p>
+        </div>
+      </div>
+
+      <div class="premium-modules-list">
+        <div class="premium-module-item">
+          <span class="pm-icon">⚡</span>
+          <span class="pm-name">InfiniteAura</span>
+        </div>
+        <div class="premium-module-item">
+          <span class="pm-icon">🛡️</span>
+          <span class="pm-name">AntiHits</span>
+        </div>
+        <div class="premium-module-item">
+          <span class="pm-icon">🔍</span>
+          <span class="pm-name">StashFinder</span>
+        </div>
+        <div class="premium-module-item">
+          <span class="pm-icon">⛏️</span>
+          <span class="pm-name">AutoMine</span>
+        </div>
+        <div class="premium-module-item">
+          <span class="pm-icon">🛡️</span>
+          <span class="pm-name">AutoArmor</span>
+        </div>
+        <div class="premium-module-item">
+          <span class="pm-icon">🌀</span>
+          <span class="pm-name">AutoTotem</span>
+        </div>
+      </div>
+
+      <div class="premium-cta">
+        <div class="premium-pricing">
+          <div class="pricing-option">
+            <div class="price-badge">Monthly</div>
+            <div class="price-amount">$9.99<span class="price-period">/mo</span></div>
+          </div>
+          <div class="pricing-option">
+            <div class="price-badge">Lifetime</div>
+            <div class="price-amount gold-text">$29.99<span class="price-period"> once</span></div>
+          </div>
+        </div>
+        <a href="/checkout.html" class="btn btn-gold btn-lg" id="get-premium-btn">
+          👑 Get Vortex Premium
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ COMMANDS ═══════════════════ -->
+<section class="section commands-section" id="commands">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">💻 Commands</span>
+      <h2>Vortex Commands</h2>
+      <p>Every Vortex command uses the <code style="font-family:var(--font-mono);background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);border-radius:4px;padding:2px 8px;color:#a78bfa;font-size:0.9em">/.&nbsp;</code> prefix in chat.</p>
+    </div>
+
+    <div class="commands-grid">
+      <div class="cmd-card">
+        <span class="cmd-prefix">/.&nbsp;</span>
+        <div class="cmd-content">
+          <div class="cmd-name">help</div>
+          <div class="cmd-desc">Display all available modules and commands.</div>
+        </div>
+      </div>
+      <div class="cmd-card">
+        <span class="cmd-prefix">/.&nbsp;</span>
+        <div class="cmd-content">
+          <div class="cmd-name">modules</div>
+          <div class="cmd-desc">List all modules with their current toggle state.</div>
+        </div>
+      </div>
+      <div class="cmd-card">
+        <span class="cmd-prefix">/.&nbsp;</span>
+        <div class="cmd-content">
+          <div class="cmd-name">killaura</div>
+          <div class="cmd-desc">Toggle Killaura on or off.</div>
+        </div>
+      </div>
+      <div class="cmd-card">
+        <span class="cmd-prefix">/.&nbsp;</span>
+        <div class="cmd-content">
+          <div class="cmd-name">fly</div>
+          <div class="cmd-desc">Toggle Fly mode on or off.</div>
+        </div>
+      </div>
+      <div class="cmd-card">
+        <span class="cmd-prefix">/.&nbsp;</span>
+        <div class="cmd-content">
+          <div class="cmd-name">aimbot</div>
+          <div class="cmd-desc">Toggle Aimbot on or off.</div>
+        </div>
+      </div>
+      <div class="cmd-card">
+        <span class="cmd-prefix">/.&nbsp;</span>
+        <div class="cmd-content">
+          <div class="cmd-name">reach</div>
+          <div class="cmd-desc">Toggle Reach on or off.</div>
+        </div>
+      </div>
+      <div class="cmd-card">
+        <span class="cmd-prefix">/.&nbsp;</span>
+        <div class="cmd-content">
+          <div class="cmd-name">xray</div>
+          <div class="cmd-desc">Toggle Xray on or off.</div>
+        </div>
+      </div>
+      <div class="cmd-card">
+        <span class="cmd-prefix">/.&nbsp;</span>
+        <div class="cmd-content">
+          <div class="cmd-name">esp</div>
+          <div class="cmd-desc">Toggle ESP on or off.</div>
+        </div>
+      </div>
+      <div class="cmd-card">
+        <span class="cmd-prefix">/.&nbsp;</span>
+        <div class="cmd-content">
+          <div class="cmd-name">speed</div>
+          <div class="cmd-desc">Toggle Speed on or off.</div>
+        </div>
+      </div>
+      <div class="cmd-card">
+        <span class="cmd-prefix">/.&nbsp;</span>
+        <div class="cmd-content">
+          <div class="cmd-name">tpmine &lt;ore&gt;</div>
+          <div class="cmd-desc">Search for an ore and teleport to it when crouching. Example: <code style="font-size:0.8em;color:#a78bfa">/.tpmine diamond_ore</code></div>
+        </div>
+      </div>
+      <div class="cmd-card">
+        <span class="cmd-prefix">/.&nbsp;</span>
+        <div class="cmd-content">
+          <div class="cmd-name">config</div>
+          <div class="cmd-desc">Open the Config Manager interface.</div>
+        </div>
+      </div>
+      <div class="cmd-card">
+        <span class="cmd-prefix">/.&nbsp;</span>
+        <div class="cmd-content">
+          <div class="cmd-name">settings</div>
+          <div class="cmd-desc">Open Vortex Client settings panel.</div>
+        </div>
+      </div>
+      <div class="cmd-card cmd-premium">
+        <span class="cmd-prefix">/.&nbsp;</span>
+        <div class="cmd-content">
+          <div class="cmd-name">automine</div>
+          <div class="cmd-desc">Toggle AutoMine on or off.</div>
+        </div>
+        <span class="badge-premium cmd-badge-premium">👑 Premium</span>
+      </div>
+      <div class="cmd-card cmd-premium">
+        <span class="cmd-prefix">/.&nbsp;</span>
+        <div class="cmd-content">
+          <div class="cmd-name">autoarmor</div>
+          <div class="cmd-desc">Toggle AutoArmor on or off.</div>
+        </div>
+        <span class="badge-premium cmd-badge-premium">👑 Premium</span>
+      </div>
+      <div class="cmd-card cmd-premium">
+        <span class="cmd-prefix">/.&nbsp;</span>
+        <div class="cmd-content">
+          <div class="cmd-name">autototem</div>
+          <div class="cmd-desc">Toggle AutoTotem on or off.</div>
+        </div>
+        <span class="badge-premium cmd-badge-premium">👑 Premium</span>
+      </div>
+      <div class="cmd-card cmd-premium">
+        <span class="cmd-prefix">/.&nbsp;</span>
+        <div class="cmd-content">
+          <div class="cmd-name">infiniteaura</div>
+          <div class="cmd-desc">Toggle InfiniteAura on or off.</div>
+        </div>
+        <span class="badge-premium cmd-badge-premium">👑 Premium</span>
+      </div>
+      <div class="cmd-card cmd-premium">
+        <span class="cmd-prefix">/.&nbsp;</span>
+        <div class="cmd-content">
+          <div class="cmd-name">antihits</div>
+          <div class="cmd-desc">Toggle AntiHits on or off.</div>
+        </div>
+        <span class="badge-premium cmd-badge-premium">👑 Premium</span>
+      </div>
+      <div class="cmd-card cmd-premium">
+        <span class="cmd-prefix">/.&nbsp;</span>
+        <div class="cmd-content">
+          <div class="cmd-name">stashfinder</div>
+          <div class="cmd-desc">Toggle StashFinder on or off.</div>
+        </div>
+        <span class="badge-premium cmd-badge-premium">👑 Premium</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ FAQ ═══════════════════ -->
+<section class="section faq-section" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">❓ FAQ</span>
+      <h2>Frequently Asked Questions</h2>
+      <p>Everything you need to know about Vortex Client.</p>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">
+          What is Vortex?
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Vortex is a Minecraft Bedrock client that connects through Vortex Proxy. It gives you access to 38+ modules across combat, movement, visual, utility, and HUD categories. You authenticate with your real Microsoft account — Vortex never sees your password.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          What platforms does Vortex support?
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Vortex supports Minecraft Bedrock Edition. The proxy connection works with any Bedrock client — you point your Minecraft to the Vortex Proxy address after connecting through the website.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          How do I connect Microsoft?
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Click <strong>Connect Microsoft</strong> anywhere on the site. You will be redirected to Microsoft's official login page at <code>login.microsoftonline.com</code> — Vortex never sees your password. After logging in, you are redirected back and your account is linked.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          How does TPMine work?
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            TPMine targets ore blocks only. Use <code>/.tpmine diamond_ore</code> to set a target ore. Then crouch/sneak in Minecraft — Vortex will teleport you to the nearest matching ore in range. TPMine only works with valid ores: diamond, emerald, gold, iron, coal, copper, redstone, lapis, ancient debris, and other Minecraft ores. If you enter a non-ore block like dirt or stone, Vortex will respond: <em>TPMine only supports ores.</em>
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          What is included with Premium?
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Vortex Premium includes six exclusive modules: <strong>InfiniteAura</strong>, <strong>AntiHits</strong>, <strong>StashFinder</strong>, <strong>AutoMine</strong>, <strong>AutoArmor</strong>, and <strong>AutoTotem</strong>. These are the only Premium modules — all other modules are available to regular users.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          How do I connect to a server?
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            After connecting your Microsoft account, go to your Account page. Choose a server from the available list, then click <strong>Connect Vortex Proxy</strong>. You will get a Vortex Proxy address — add that as an external server in Minecraft Bedrock and you are in.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          How do I purchase Premium?
+          <span class="faq-chevron">▼</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Click <strong>Get Vortex Premium</strong> on the Premium section. You will be taken to Stripe checkout — the link will be live when Vortex launches. Your Premium status is automatically applied to your account after payment.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="logo-icon">⚡</span>
+          <span style="background:linear-gradient(135deg,#a78bfa,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">VORTEX CLIENT</span>
+        </div>
+        <p>Minecraft Bedrock Client. Connect your Microsoft account, choose a server, and join through Vortex Proxy.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#premium">Premium</a></li>
+          <li><a href="#commands">Commands</a></li>
+          <li><a href="/account">Account</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Modules</h4>
+        <ul>
+          <li><a href="#features">Combat</a></li>
+          <li><a href="#features">Movement</a></li>
+          <li><a href="#features">Visual</a></li>
+          <li><a href="#features">Utility</a></li>
+          <li><a href="#features">HUD &amp; Client</a></li>
+          <li><a href="#premium">Premium</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Vortex Client. All rights reserved.</p>
+      <p class="footer-disclaimer">Not affiliated with Mojang or Microsoft.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════ MODALS ═══════════════════ -->
+
+<!-- Premium required modal -->
+<div class="modal-overlay" id="premium-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('premium-modal')">✕</button>
+    <div class="modal-icon">👑</div>
+    <h3>Vortex Premium Required</h3>
+    <p>This module is exclusive to Vortex Premium members. Unlock all six Premium modules with a single purchase.</p>
+    <div class="modal-actions">
+      <button class="btn btn-gold" onclick="openPremiumModal()">Get Premium</button>
+      <button class="btn btn-ghost" onclick="closeModal('premium-modal')">Not now</button>
+    </div>
+  </div>
+</div>
+
+<!-- Stripe placeholder modal -->
+<div class="modal-overlay" id="stripe-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('stripe-modal')">✕</button>
+    <div class="modal-icon">💳</div>
+    <h3>Choose Your Plan</h3>
+    <p>Select the plan that works best for you:</p>
+    
+    <div style="display:flex;flex-direction:column;gap:1rem;margin:1.5rem 0">
+      <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;cursor:pointer;transition:var(--transition)" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+          <span style="font-weight:700;font-size:1rem">Monthly Plan</span>
+          <span style="font-size:1.5rem;font-weight:800;color:#f59e0b">$9.99/mo</span>
+        </div>
+        <div style="font-size:0.8rem;color:var(--text-muted)">Cancel anytime • All premium features</div>
+      </div>
+      
+      <div style="background:linear-gradient(135deg,rgba(245,158,11,0.1),rgba(245,158,11,0.05));border:1px solid rgba(245,158,11,0.3);border-radius:var(--radius);padding:1.25rem;cursor:pointer;transition:var(--transition);position:relative" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(245,158,11,0.3)'">
+        <div style="position:absolute;top:-8px;right:1rem;background:linear-gradient(135deg,#f59e0b,#d97706);color:#000;padding:2px 10px;border-radius:99px;font-size:0.65rem;font-weight:800">BEST VALUE</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+          <span style="font-weight:700;font-size:1rem">Lifetime Access</span>
+          <span style="font-size:1.5rem;font-weight:800;color:#f59e0b">$29.99</span>
+        </div>
+        <div style="font-size:0.8rem;color:var(--text-muted)">One-time payment • Forever access • Save 70%</div>
+      </div>
+    </div>
+    
+    <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-radius:var(--radius-sm);padding:0.875rem;margin-bottom:1rem">
+      <div style="font-size:0.8rem;color:var(--text-secondary)">
+        <strong style="color:var(--gold)">Setup Stripe:</strong> Follow the instructions in <code style="background:var(--bg-secondary);padding:2px 6px;border-radius:4px;font-size:0.75rem">STRIPE-SETUP.md</code> to create your payment links, then add them here.
+      </div>
+    </div>
+    
+    <div class="modal-actions">
+      <button class="btn btn-ghost btn-full" onclick="closeModal('stripe-modal')">I'll set this up later</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast container -->
+<div class="toast-container" id="toast-container"></div>
+
+<script src="/js/app.js"></script>
+</body>
+</html>

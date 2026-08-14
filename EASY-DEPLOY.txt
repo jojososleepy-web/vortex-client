@@ -1,0 +1,96 @@
+═══════════════════════════════════════════════════════════
+  DEPLOY VORTEX CLIENT (100% FREE) - EASY VERSION
+═══════════════════════════════════════════════════════════
+
+Follow these 5 simple steps:
+
+───────────────────────────────────────────────────────────
+STEP 1: Create FREE Vercel Account
+───────────────────────────────────────────────────────────
+
+1. Open browser and go to: https://vercel.com/signup
+2. Click "Continue with Email" (or GitHub if you have it)
+3. Enter your email and create password
+4. Verify your email
+5. Done! (takes 2 minutes)
+
+───────────────────────────────────────────────────────────
+STEP 2: Open PowerShell
+───────────────────────────────────────────────────────────
+
+1. Press Windows Key
+2. Type: PowerShell
+3. Click "Windows PowerShell"
+4. A blue window opens
+
+───────────────────────────────────────────────────────────
+STEP 3: Install Vercel (one-time setup)
+───────────────────────────────────────────────────────────
+
+Copy and paste this into PowerShell:
+
+npm install -g vercel
+
+Press ENTER and wait 1-2 minutes.
+
+───────────────────────────────────────────────────────────
+STEP 4: Login to Vercel
+───────────────────────────────────────────────────────────
+
+Copy and paste this into PowerShell:
+
+vercel login
+
+Press ENTER. Your browser will open - click "Confirm".
+
+───────────────────────────────────────────────────────────
+STEP 5: Deploy Your Website!
+───────────────────────────────────────────────────────────
+
+Copy and paste these commands ONE AT A TIME into PowerShell:
+
+cd "C:\Users\Mrbea\Downloads\Minecraft client script with HUD features - Claude_files\vortex-client"
+
+Then:
+
+vercel
+
+It will ask questions - just press ENTER for everything EXCEPT:
+
+- "What's your project's name?" → Type: vortex-client
+
+Wait 30-60 seconds...
+
+YOU'LL GET A URL LIKE:
+https://vortex-client-abc123.vercel.app
+
+THAT'S YOUR WEBSITE! 🎉
+
+───────────────────────────────────────────────────────────
+✅ DONE!
+───────────────────────────────────────────────────────────
+
+Copy the URL and visit it in your browser!
+
+Anyone in the world can now visit your Vortex Client website!
+
+───────────────────────────────────────────────────────────
+💰 COST: $0 FOREVER
+───────────────────────────────────────────────────────────
+
+Vercel is 100% free for this. No credit card needed!
+
+───────────────────────────────────────────────────────────
+🎮 MINECRAFT HACKS STILL WORK OFFLINE
+───────────────────────────────────────────────────────────
+
+The behavior pack (actual hacks) is separate:
+- Copy bedrock_pack folder to Minecraft
+- Type /.help in-game
+- Works without internet
+
+The website just shows features and handles accounts!
+
+═══════════════════════════════════════════════════════════
+
+Need help? Ask me! I'll guide you through each step.

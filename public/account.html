@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account — Vortex Client</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="account-page">
+
+<nav class="navbar" id="navbar">
+  <a href="/" class="nav-logo">
+    <span class="logo-icon">⚡</span>
+    <span>VORTEX</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/#home">Home</a></li>
+    <li><a href="/#features">Features</a></li>
+    <li><a href="/#premium">Premium</a></li>
+    <li><a href="/#commands">Commands</a></li>
+    <li><a href="/account" class="active">Account</a></li>
+    <li><a href="/#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="btn btn-danger btn-sm" id="logout-btn" style="display:none">Logout</button>
+  </div>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-nav" id="mobile-nav">
+  <a href="/#home">Home</a>
+  <a href="/#features">Features</a>
+  <a href="/#premium">Premium</a>
+  <a href="/#commands">Commands</a>
+  <a href="/account">Account</a>
+  <a href="/#faq">FAQ</a>
+</div>
+
+<div class="account-hero-bar">
+  <div class="container">
+    <div class="account-header">
+      <div class="account-avatar" id="avatar">👤</div>
+      <div class="account-info">
+        <h1 id="user-name">Vortex Account</h1>
+        <p id="user-email">Loading...</p>
+      </div>
+      <span class="status-pill connected" id="ms-status" style="display:none">
+        <span class="status-dot"></span> Microsoft Connected
+      </span>
+      <span class="status-pill pending" id="premium-badge" style="display:none">
+        👑 Premium
+      </span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="account-grid" id="account-content">
+    
+    <!-- Not logged in -->
+    <div id="not-logged-in" style="grid-column:1/-1;text-align:center;padding:4rem 2rem">
+      <div style="font-size:3rem;margin-bottom:1rem">🔒</div>
+      <h2>Connect Your Account</h2>
+      <p style="margin:1rem 0 2rem;color:var(--text-secondary)">Login with Microsoft or use Demo mode to test Vortex features.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="/auth/login" class="btn btn-primary btn-lg">
+          <svg class="ms-logo" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px">
+            <rect x="1" y="1" width="9" height="9" fill="#f25022"/>
+            <rect x="11" y="1" width="9" height="9" fill="#7fba00"/>
+            <rect x="1" y="11" width="9" height="9" fill="#00a4ef"/>
+            <rect x="11" y="11" width="9" height="9" fill="#ffb900"/>
+          </svg>
+          Connect Microsoft
+        </a>
+        <button class="btn btn-outline btn-lg" id="demo-login-btn-account">🎮 Demo Login</button>
+      </div>
+    </div>
+
+    <!-- Logged in content -->
+    <div id="logged-in-content" style="display:none;grid-column:1/-1">
+      <div class="account-grid">
+        
+        <!-- Left: Connection flow -->
+        <div class="account-card">
+          <h3 class="account-card-title">Connection Status</h3>
+          
+          <div class="connection-steps">
+            <div class="conn-step step-done" id="step-ms">
+              <span class="step-icon">✓</span>
+              <span class="step-label">Microsoft Account</span>
+              <span class="step-check">✓</span>
+            </div>
+            <div class="conn-step step-pending" id="step-server">
+              <span class="step-icon">🎮</span>
+              <span class="step-label">Server Selected</span>
+            </div>
+            <div class="conn-step step-pending" id="step-proxy">
+              <span class="step-icon">🌐</span>
+              <span class="step-label">Vortex Proxy</span>
+            </div>
+          </div>
+
+          <div id="server-selection" style="display:none">
+            <h3 class="account-card-title" style="margin-top:2rem">Choose Your Server</h3>
+            <div class="servers-grid">
+              <div class="server-card" data-server="hive">
+                <div class="server-card-header">
+                  <div class="server-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)">🐝</div>
+                  <div class="server-card-info">
+                    <h4>The Hive</h4>
+                  </div>
+                </div>
+                <div class="server-meta">
+                  <span class="meta-item"><span class="online-dot"></span> Online</span>
+                  <span class="meta-item">🌍 Global</span>
+                </div>
+                <button class="btn btn-primary btn-full btn-sm">Connect</button>
+              </div>
+              
+              <div class="server-card" data-server="lifeboat">
+                <div class="server-card-header">
+                  <div class="server-icon" style="background:linear-gradient(135deg,#3b82f6,#2563eb)">⛵</div>
+                  <div class="server-card-info">
+                    <h4>Lifeboat</h4>
+                  </div>
+                </div>
+                <div class="server-meta">
+                  <span class="meta-item"><span class="online-dot"></span> Online</span>
+                  <span class="meta-item">🌍 Global</span>
+                </div>
+                <button class="btn btn-primary btn-full btn-sm">Connect</button>
+              </div>
+
+              <div class="server-card" data-server="cubecraft">
+                <div class="server-icon" style="background:linear-gradient(135deg,#10b981,#059669)">🟩</div>
+                <div class="server-card-info">
+                  <h4>CubeCraft</h4>
+                </div>
+                <div class="server-meta">
+                  <span class="meta-item"><span class="online-dot"></span> Online</span>
+                  <span class="meta-item">🌍 EU</span>
+                </div>
+                <button class="btn btn-primary btn-full btn-sm">Connect</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="proxy-section" style="display:none">
+            <h3 class="account-card-title" style="margin-top:2rem">Vortex Proxy Address</h3>
+            <div class="proxy-address-box">
+              <div>
+                <div class="proxy-addr-text" id="proxy-address">vortex-proxy.local</div>
+                <div class="proxy-addr-port">Port: <span id="proxy-port">19132</span></div>
+              </div>
+              <button class="btn btn-ghost btn-sm" id="copy-address-btn">📋 Copy</button>
+            </div>
+            <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:1.5rem">
+              Add this address as an external server in Minecraft Bedrock, then join to connect through Vortex Proxy.
+            </p>
+            <button class="btn btn-danger btn-full" id="disconnect-btn">Disconnect</button>
+          </div>
+        </div>
+
+        <!-- Right: Account info -->
+        <div class="account-card">
+          <h3 class="account-card-title">Account Details</h3>
+          <div class="info-row">
+            <span class="info-label">Microsoft</span>
+            <span class="info-value" id="info-ms">Connected</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Premium</span>
+            <span class="info-value" id="info-premium">Free</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Server</span>
+            <span class="info-value" id="info-server">None</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Proxy</span>
+            <span class="info-value" id="info-proxy">Disconnected</span>
+          </div>
+          
+          <div style="margin-top:2rem">
+            <a href="/#premium" class="btn btn-gold btn-full">👑 Get Premium</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast-container" id="toast-container"></div>
+
+<script src="/js/app.js"></script>
+<script>
+// Account page logic
+let currentState = { authenticated: false, selectedServer: null, proxyConnected: false };
+
+async function loadAccount() {
+  try {
+    const res = await fetch('/api/auth/status');
+    const data = await res.json();
+    currentState = data;
+
+    if (!data.authenticated) {
+      document.getElementById('not-logged-in').style.display = 'block';
+      document.getElementById('logged-in-content').style.display = 'none';
+      return;
+    }
+
+    document.getElementById('not-logged-in').style.display = 'none';
+    document.getElementById('logged-in-content').style.display = 'block';
+    
+    const name = data.user.displayName || 'User';
+    document.getElementById('user-name').textContent = name;
+    document.getElementById('user-email').textContent = data.user.email || '';
+    document.getElementById('avatar').textContent = name[0].toUpperCase();
+    document.getElementById('ms-status').style.display = 'inline-flex';
+    document.getElementById('logout-btn').style.display = 'inline-flex';
+
+    if (data.premium) {
+      document.getElementById('premium-badge').style.display = 'inline-flex';
+      document.getElementById('info-premium').textContent = 'Active';
+      document.getElementById('info-premium').style.color = 'var(--gold)';
+    }
+
+    // Update connection steps
+    if (!data.selectedServer) {
+      document.getElementById('server-selection').style.display = 'block';
+      document.getElementById('step-server').classList.add('step-active');
+      document.getElementById('step-server').classList.remove('step-pending');
+    } else {
+      document.getElementById('step-server').classList.add('step-done');
+      document.getElementById('step-server').classList.remove('step-active','step-pending');
+      document.getElementById('step-server').querySelector('.step-label').textContent = data.selectedServer.serverName;
+      const checkMark = document.createElement('span');
+      checkMark.className = 'step-check';
+      checkMark.textContent = '✓';
+      if (!document.querySelector('#step-server .step-check')) {
+        document.getElementById('step-server').appendChild(checkMark);
+      }
+      document.getElementById('info-server').textContent = data.selectedServer.serverName;
+
+      if (!data.proxyConnected) {
+        document.getElementById('step-proxy').classList.add('step-active');
+        document.getElementById('step-proxy').classList.remove('step-pending');
+        document.getElementById('server-selection').innerHTML = `
+          <h3 class="account-card-title" style="margin-top:2rem">Ready to Connect</h3>
+          <p style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:1.5rem">
+            Server selected: <strong style="color:var(--text-primary)">${data.selectedServer.serverName}</strong>
+          </p>
+          <button class="btn btn-primary btn-full btn-lg" id="connect-proxy-btn">
+            <span class="spinner" style="display:none"></span>
+            <span class="btn-text">Connect Vortex Proxy</span>
+          </button>
+        `;
+        document.getElementById('server-selection').style.display = 'block';
+        document.getElementById('connect-proxy-btn').onclick = connectProxy;
+      } else {
+        document.getElementById('step-proxy').classList.add('step-done');
+        document.getElementById('step-proxy').classList.remove('step-active','step-pending');
+        const checkMark2 = document.createElement('span');
+        checkMark2.className = 'step-check';
+        checkMark2.textContent = '✓';
+        if (!document.querySelector('#step-proxy .step-check')) {
+          document.getElementById('step-proxy').appendChild(checkMark2);
+        }
+        document.getElementById('info-proxy').textContent = 'Connected';
+        document.getElementById('info-proxy').style.color = 'var(--green)';
+        document.getElementById('server-selection').style.display = 'none';
+        document.getElementById('proxy-section').style.display = 'block';
+      }
+    }
+
+    if (data.proxyConnected && data.selectedServer) {
+      document.getElementById('proxy-address').textContent = 'Vortex Proxy';
+      document.getElementById('proxy-port').textContent = '19132';
+    }
+
+    // Check for success message
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('auth') === 'success') {
+      showToast('✅ Microsoft account connected successfully!', 'success');
+      history.replaceState({}, '', '/account');
+    }
+
+  } catch (err) {
+    console.error(err);
+    showToast('⚠️ Error loading account', 'error');
+  }
+}
+
+// Server selection
+document.addEventListener('click', e => {
+  if (e.target.closest('.server-card')) {
+    const card = e.target.closest('.server-card');
+    const serverId = card.dataset.server;
+    const serverName = card.querySelector('h4').textContent;
+    selectServer(serverId, serverName);
+  }
+});
+
+async function selectServer(id, name) {
+  try {
+    const res = await fetch('/api/server/select', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ serverId: id, serverName: name, serverHost: id + '.server', serverPort: 19132 })
+    });
+    if (res.ok) {
+      showToast(`✅ Selected ${name}`, 'success');
+      loadAccount();
+    }
+  } catch (err) {
+    showToast('⚠️ Error selecting server', 'error');
+  }
+}
+
+async function connectProxy() {
+  const btn = document.getElementById('connect-proxy-btn');
+  const spinner = btn.querySelector('.spinner');
+  const text = btn.querySelector('.btn-text');
+  btn.disabled = true;
+  spinner.style.display = 'inline-block';
+  text.textContent = 'Connecting...';
+
+  try {
+    const res = await fetch('/api/proxy/connect', { method: 'POST' });
+    const data = await res.json();
+    if (data.success) {
+      showToast('✅ ' + data.message, 'success');
+      setTimeout(() => loadAccount(), 500);
+    } else {
+      throw new Error(data.error);
+    }
+  } catch (err) {
+    showToast('⚠️ Connection failed', 'error');
+    btn.disabled = false;
+    spinner.style.display = 'none';
+    text.textContent = 'Connect Vortex Proxy';
+  }
+}
+
+document.getElementById('copy-address-btn')?.addEventListener('click', () => {
+  const addr = document.getElementById('proxy-address').textContent;
+  const port = document.getElementById('proxy-port').textContent;
+  navigator.clipboard.writeText(addr + ':' + port);
+  showToast('📋 Address copied!', 'success');
+});
+
+document.getElementById('disconnect-btn')?.addEventListener('click', async () => {
+  try {
+    await fetch('/api/proxy/disconnect', { method: 'POST' });
+    showToast('✅ Disconnected', 'success');
+    loadAccount();
+  } catch (_) {
+    showToast('⚠️ Error disconnecting', 'error');
+  }
+});
+
+document.getElementById('logout-btn')?.addEventListener('click', async () => {
+  try {
+    await fetch('/auth/logout', { method: 'POST' });
+    window.location.href = '/';
+  } catch (_) {
+    showToast('⚠️ Logout failed', 'error');
+  }
+});
+
+loadAccount();
+</script>
+</body>
+</html>
+
+<script>
+// Demo login from account page
+document.addEventListener('click', async (e) => {
+  if (e.target.id === 'demo-login-btn-account') {
+    try {
+      const res = await fetch('/auth/demo-login', { method: 'POST' });
+      if (res.ok) {
+        showToast('✅ Demo login successful!', 'success');
+        setTimeout(() => loadAccount(), 500);
+      }
+    } catch (err) {
+      showToast('⚠️ Demo login failed', 'error');
+    }
+  }
+});
+</script>
