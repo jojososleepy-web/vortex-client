@@ -382,14 +382,37 @@ loadAccount();
 // Demo login from account page
 document.addEventListener('click', async (e) => {
   if (e.target.id === 'demo-login-btn-account') {
+    e.preventDefault();
+    const btn = e.target;
+    btn.disabled = true;
+    btn.textContent = '⏳ Logging in...';
+    
     try {
-      const res = await fetch('/auth/demo-login', { method: 'POST' });
-      if (res.ok) {
+      const res = await fetch('/auth/demo-login', { 
+        method: 'POST',
+        credentials: 'include'
+      });
+      
+      const data = await res.json();
+      
+      if (res.ok && data.success) {
+        btn.textContent = '✅ Success!';
         showToast('✅ Demo login successful!', 'success');
-        setTimeout(() => loadAccount(), 500);
+        // Reload account data
+        setTimeout(() => {
+          btn.style.display = 'none';
+          loadAccount();
+        }, 500);
+      } else {
+        btn.disabled = false;
+        btn.textContent = '🎮 Demo Login';
+        showToast('⚠️ Demo login failed', 'error');
       }
     } catch (err) {
-      showToast('⚠️ Demo login failed', 'error');
+      btn.disabled = false;
+      btn.textContent = '🎮 Demo Login';
+      showToast('⚠️ Error: ' + err.message, 'error');
+      console.error('Demo login error:', err);
     }
   }
 });
