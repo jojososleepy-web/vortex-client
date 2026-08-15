@@ -1,0 +1,12 @@
+{
+  "name": "vortex-proxy",
+  "version": "1.0.0",
+  "description": "Vortex Minecraft Bedrock Proxy Server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bedrock-protocol": "^3.13.0"
+  }
+}

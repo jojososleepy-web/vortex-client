@@ -237,7 +237,7 @@ app.post('/api/proxy/connect', (req, res) => {
   req.session.proxyConnected = true;
   res.json({
     success: true,
-    proxyAddress: 'Vortex Proxy',
+    proxyAddress: 'mcgateway.mcbr.cubed.host',
     proxyPort: 19132,
     message: `Connected to ${req.session.selectedServer.serverName} through Vortex Proxy.`
   });
