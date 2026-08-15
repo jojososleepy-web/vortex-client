@@ -24,7 +24,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: isHttps,
+    secure: false, // Set to false even on HTTPS for testing
     httpOnly: true,
     maxAge: 24 * 60 * 60 * 1000, // 24 hours
     sameSite: 'lax'
@@ -62,6 +62,9 @@ app.get('/account.html', (req, res) => {
 
 // Return current session/auth status as JSON
 app.get('/api/auth/status', (req, res) => {
+  console.log('Auth status check - Session ID:', req.sessionID);
+  console.log('Session user:', req.session?.user);
+  
   if (req.session && req.session.user) {
     res.json({
       authenticated: true,
@@ -75,6 +78,7 @@ app.get('/api/auth/status', (req, res) => {
       proxyConnected: req.session.proxyConnected || false
     });
   } else {
+    console.log('No authenticated session found');
     res.json({ authenticated: false });
   }
 });
@@ -178,6 +182,8 @@ app.get('/auth/callback', async (req, res) => {
 
 // Demo Login (no Microsoft required)
 app.post('/auth/demo-login', (req, res) => {
+  console.log('Demo login request received');
+  
   req.session.user = {
     id: 'demo-user-' + Date.now(),
     displayName: 'Demo User',
@@ -185,12 +191,15 @@ app.post('/auth/demo-login', (req, res) => {
     premium: false
   };
   
+  console.log('Session user set:', req.session.user);
+  
   // Force session save before responding
   req.session.save((err) => {
     if (err) {
       console.error('Session save error:', err);
       return res.status(500).json({ success: false, error: 'Session error' });
     }
+    console.log('Session saved successfully');
     res.json({ success: true });
   });
 });
