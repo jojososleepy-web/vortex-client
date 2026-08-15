@@ -184,7 +184,15 @@ app.post('/auth/demo-login', (req, res) => {
     email: 'demo@vortexclient.local',
     premium: false
   };
-  res.json({ success: true });
+  
+  // Force session save before responding
+  req.session.save((err) => {
+    if (err) {
+      console.error('Session save error:', err);
+      return res.status(500).json({ success: false, error: 'Session error' });
+    }
+    res.json({ success: true });
+  });
 });
 
 // Logout

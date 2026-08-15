@@ -127,15 +127,32 @@ checkAuth();
 
 // Demo login button on homepage
 document.getElementById('demo-login-btn')?.addEventListener('click', async () => {
+  const btn = document.getElementById('demo-login-btn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Logging in...';
+  
   try {
-    const res = await fetch('/auth/demo-login', { method: 'POST' });
-    if (res.ok) {
+    const res = await fetch('/auth/demo-login', { 
+      method: 'POST',
+      credentials: 'include'
+    });
+    
+    const data = await res.json();
+    
+    if (res.ok && data.success) {
+      btn.textContent = '✅ Success!';
       showToast('✅ Demo login successful!', 'success');
-      setTimeout(() => window.location.href = '/account.html', 800);
+      // Immediate redirect
+      window.location.href = '/account.html';
     } else {
+      btn.disabled = false;
+      btn.textContent = '🎮 Demo Login';
       showToast('⚠️ Demo login failed', 'error');
     }
   } catch (err) {
-    showToast('⚠️ Demo login failed: ' + err.message, 'error');
+    btn.disabled = false;
+    btn.textContent = '🎮 Demo Login';
+    showToast('⚠️ Error: ' + err.message, 'error');
+    console.error('Demo login error:', err);
   }
 });
