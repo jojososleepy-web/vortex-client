@@ -4,12 +4,30 @@ const session = require('express-session');
 const path = require('path');
 const crypto = require('crypto');
 const fetch = require('node-fetch');
+const bcrypt = require('bcryptjs');
+const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const CLIENT_ID = process.env.MICROSOFT_CLIENT_ID || '81feaced-5ddd-41e7-8bef-3e20a2689bb7';
 const VORTEX_DOMAIN = process.env.VORTEX_DOMAIN || 'localhost:3000';
 const SESSION_SECRET = process.env.SESSION_SECRET || 'vortex-secret-change-me';
+
+// User storage file
+const USERS_FILE = path.join(__dirname, 'users.json');
+
+// Initialize users file if doesn't exist
+if (!fs.existsSync(USERS_FILE)) {
+  fs.writeFileSync(USERS_FILE, JSON.stringify([]));
+}
+
+function getUsers() {
+  return JSON.parse(fs.readFileSync(USERS_FILE, 'utf8'));
+}
+
+function saveUsers(users) {
+  fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2));
+}
 
 // Determine if running on HTTPS
 const isHttps = !VORTEX_DOMAIN.startsWith('localhost') && !VORTEX_DOMAIN.startsWith('127.');
@@ -180,6 +198,125 @@ app.post('/auth/demo-login', (req, res) => {
     premium: false
   };
   res.json({ success: true });
+});
+
+// Register new user
+app.post('/auth/register', async (req, res) => {
+  const { username, password } = req.body;
+  if (!username || !password) return res.status(400).json({ error: 'Username and password required' });
+  
+  const users = getUsers();
+  if (users.find(u => u.username.toLowerCase() === username.toLowerCase())) {
+    return res.status(400).json({ error: 'Username taken' });
+  }
+  
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const newUser = { id: 'user-' + Date.now(), username, password: hashedPassword, premium: false };
+  users.push(newUser);
+  saveUsers(users);
+  
+  req.session.user = { id: newUser.id, displayName: newUser.username, premium: false };
+  res.json({ success: true });
+});
+
+// Login with username/password
+app.post('/auth/login-password', async (req, res) => {
+  const { username, password } = req.body;
+  if (!username || !password) return res.status(400).json({ error: 'Required fields missing' });
+  
+  const users = getUsers();
+  const user = users.find(u => u.username.toLowerCase() === username.toLowerCase());
+  if (!user || !(await bcrypt.compare(password, user.password))) {
+    return res.status(401).json({ error: 'Invalid credentials' });
+  }
+  
+  req.session.user = { id: user.id, displayName: user.username, premium: user.premium };
+  res.json({ success: true });
+});
+
+// Register new user
+app.post('/auth/register', async (req, res) => {
+  try {
+    const { username, password, email } = req.body;
+    
+    if (!username || !password) {
+      return res.status(400).json({ error: 'Username and password required' });
+    }
+    
+    const users = getUsers();
+    
+    // Check if username exists
+    if (users.find(u => u.username.toLowerCase() === username.toLowerCase())) {
+      return res.status(400).json({ error: 'Username already taken' });
+    }
+    
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+    
+    // Create user
+    const newUser = {
+      id: 'user-' + Date.now(),
+      username: username,
+      email: email || '',
+      password: hashedPassword,
+      premium: false,
+      createdAt: new Date().toISOString()
+    };
+    
+    users.push(newUser);
+    saveUsers(users);
+    
+    // Login user
+    req.session.user = {
+      id: newUser.id,
+      displayName: newUser.username,
+      email: newUser.email,
+      premium: newUser.premium
+    };
+    
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Registration error:', error);
+    res.status(500).json({ error: 'Registration failed' });
+  }
+});
+
+// Login with username/password
+app.post('/auth/login-password', async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    
+    if (!username || !password) {
+      return res.status(400).json({ error: 'Username and password required' });
+    }
+    
+    const users = getUsers();
+    const user = users.find(u => u.username.toLowerCase() === username.toLowerCase());
+    
+    if (!user) {
+      return res.status(401).json({ error: 'Invalid username or password' });
+    }
+    
+    // Check password
+    const validPassword = await bcrypt.compare(password, user.password);
+    
+    if (!validPassword) {
+      return res.status(401).json({ error: 'Invalid username or password' });
+    }
+    
+    // Login user
+    req.session.user = {
+      id: user.id,
+      displayName: user.username,
+      email: user.email,
+      premium: user.premium
+    };
+    
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Login error:', error);
+    res.status(500).json({ error: 'Login failed' });
+  }
 });
 
 // Logout
