@@ -56,6 +56,10 @@ app.get('/account', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'account.html'));
 });
 
+app.get('/account.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'account.html'));
+});
+
 // Return current session/auth status as JSON
 app.get('/api/auth/status', (req, res) => {
   if (req.session && req.session.user) {

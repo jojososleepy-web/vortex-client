@@ -131,9 +131,11 @@ document.getElementById('demo-login-btn')?.addEventListener('click', async () =>
     const res = await fetch('/auth/demo-login', { method: 'POST' });
     if (res.ok) {
       showToast('✅ Demo login successful!', 'success');
-      setTimeout(() => window.location.href = '/account', 1000);
+      setTimeout(() => window.location.href = '/account.html', 800);
+    } else {
+      showToast('⚠️ Demo login failed', 'error');
     }
   } catch (err) {
-    showToast('⚠️ Demo login failed', 'error');
+    showToast('⚠️ Demo login failed: ' + err.message, 'error');
   }
 });
