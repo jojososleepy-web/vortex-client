@@ -206,6 +206,7 @@ async function loadAccount() {
   try {
     const res = await fetch('/api/auth/status');
     const data = await res.json();
+    console.log('Auth status:', data); // DEBUG
     currentState = data;
 
     if (!data.authenticated) {
