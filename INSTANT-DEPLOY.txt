@@ -1,0 +1,62 @@
+🚀 DEPLOY VORTEXPROXY.ONLINE IN 3 MINUTES
+
+YOUR CODE IS READY! Just do these 3 steps:
+
+═══════════════════════════════════════════════
+STEP 1: Push to GitHub (2 minutes)
+═══════════════════════════════════════════════
+
+Open PowerShell and run:
+
+cd "c:\Users\Mrbea\Downloads\Minecraft client script with HUD features - Claude_files\vortex-client"
+
+git init
+git add .
+git commit -m "Vortex Client"
+
+Then go to: https://github.com/new
+- Name: vortex-client
+- Click "Create repository"
+
+Copy the commands GitHub shows and run them!
+
+═══════════════════════════════════════════════
+STEP 2: Deploy to Render (1 minute)
+═══════════════════════════════════════════════
+
+1. Go to: https://render.com
+2. Click "Get Started for Free"
+3. Sign up with GitHub
+4. Click "New +" → "Web Service"
+5. Connect your "vortex-client" repo
+6. Settings:
+   - Name: vortex-client
+   - Environment: Node
+   - Build: npm install
+   - Start: node server.js
+7. Add Environment Variables:
+   MICROSOFT_CLIENT_ID=63f94002-a99a-4fee-b1fb-a2920b141548
+   SESSION_SECRET=vortex-secret-key
+8. Click "Create Web Service"
+
+DONE! You'll get a URL like: vortex-client.onrender.com
+
+═══════════════════════════════════════════════
+STEP 3: Connect Your Domain (30 seconds)
+═══════════════════════════════════════════════
+
+In Render:
+1. Settings → Custom Domain
+2. Add: vortexproxy.online
+3. Copy the CNAME they give you
+
+In Namecheap:
+1. DNS settings
+2. Change CNAME @ to the Render URL
+3. Save
+
+DONE! vortexproxy.online works in 10 minutes!
+
+═══════════════════════════════════════════════
+
+START WITH STEP 1 NOW!
