@@ -22,6 +22,7 @@
     <li><a href="#home" class="active">Home</a></li>
     <li><a href="#features">Features</a></li>
     <li><a href="#premium">Premium</a></li>
+    <li><a href="#toolbox">Toolbox</a></li>
     <li><a href="#commands">Commands</a></li>
     <li><a href="/account">Account</a></li>
     <li><a href="#faq">FAQ</a></li>
@@ -48,6 +49,7 @@
   <a href="#home">Home</a>
   <a href="#features">Features</a>
   <a href="#premium">Premium</a>
+  <a href="#toolbox">Toolbox</a>
   <a href="#commands">Commands</a>
   <a href="/account">Account</a>
   <a href="#faq">FAQ</a>
@@ -84,6 +86,14 @@
       <p class="hero-sub">
         The ultimate Minecraft Bedrock client. Featuring combat, movement, visual, utility, and full HUD customization — all connected through Vortex Proxy.
       </p>
+      <div class="proxy-info-banner">
+        <div class="proxy-icon">🌐</div>
+        <div class="proxy-details">
+          <div class="proxy-label">Proxy Server Address</div>
+          <div class="proxy-address"><code>127.0.0.1:19132</code></div>
+          <div class="proxy-hint">Add this to your Minecraft servers to connect with hacks enabled</div>
+        </div>
+      </div>
       <div class="hero-actions">
         <a href="/auth/login" class="btn btn-primary btn-lg" id="hero-login-btn">
           <svg class="ms-logo" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px">
@@ -756,6 +766,128 @@
           <div class="cmd-desc">Toggle StashFinder on or off.</div>
         </div>
         <span class="badge-premium cmd-badge-premium">👑 Premium</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════ HOW TO CONNECT ═══════════════════ -->
+<section class="section toolbox-section" id="toolbox">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">🔧 Toolbox</span>
+      <h2>How to Connect</h2>
+      <p>Follow these steps to connect to Vortex Proxy and start using hacks.</p>
+    </div>
+
+    <div class="toolbox-grid">
+      <!-- PC Instructions -->
+      <div class="toolbox-card">
+        <div class="toolbox-header">
+          <span class="toolbox-icon">💻</span>
+          <h3>PC (Windows)</h3>
+        </div>
+        <div class="toolbox-content">
+          <div class="toolbox-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">Open Minecraft Bedrock Edition</div>
+              <div class="step-desc">Launch Minecraft for Windows from the Microsoft Store.</div>
+            </div>
+          </div>
+          <div class="toolbox-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">Add Vortex Proxy Server</div>
+              <div class="step-desc">Go to Play → Servers → Add Server</div>
+              <div class="server-info">
+                <div class="server-info-row">
+                  <span class="info-label">Server Name:</span>
+                  <code class="info-value selectable">Vortex Proxy</code>
+                </div>
+                <div class="server-info-row">
+                  <span class="info-label">Address:</span>
+                  <code class="info-value selectable">127.0.0.1</code>
+                </div>
+                <div class="server-info-row">
+                  <span class="info-label">Port:</span>
+                  <code class="info-value selectable">19132</code>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="toolbox-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <div class="step-title">Join & Use Commands</div>
+              <div class="step-desc">Join the server and type commands like <code>/.killaura</code>, <code>/.speed</code>, <code>/.fly</code></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Remote Connection Instructions -->
+      <div class="toolbox-card">
+        <div class="toolbox-header">
+          <span class="toolbox-icon">🌐</span>
+          <h3>Remote Connection</h3>
+        </div>
+        <div class="toolbox-content">
+          <div class="toolbox-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">Get Your Connection Info</div>
+              <div class="step-desc">After subscribing to Vortex Premium, you'll receive your personal proxy address.</div>
+            </div>
+          </div>
+          <div class="toolbox-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">Add Server in Minecraft</div>
+              <div class="step-desc">Use the address provided in your account dashboard.</div>
+            </div>
+          </div>
+          <div class="toolbox-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <div class="step-title">Connect & Play</div>
+              <div class="step-desc">Join and use <code>/.login</code> then <code>/.connect [server]</code></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Commands Reference -->
+    <div class="quick-commands">
+      <h3 style="margin-bottom:1rem">⚡ Quick Commands</h3>
+      <div class="quick-cmd-grid">
+        <div class="quick-cmd-item">
+          <code>/.login</code>
+          <span>Login to proxy</span>
+        </div>
+        <div class="quick-cmd-item">
+          <code>/.connect zeqa.net</code>
+          <span>Connect to a server</span>
+        </div>
+        <div class="quick-cmd-item">
+          <code>/.killaura</code>
+          <span>Enable killaura</span>
+        </div>
+        <div class="quick-cmd-item">
+          <code>/.speed</code>
+          <span>Enable speed</span>
+        </div>
+        <div class="quick-cmd-item">
+          <code>/.fly</code>
+          <span>Enable fly</span>
+        </div>
+        <div class="quick-cmd-item">
+          <code>/.help</code>
+          <span>Show all commands</span>
+        </div>
       </div>
     </div>
   </div>

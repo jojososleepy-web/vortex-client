@@ -7,6 +7,8 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "bedrock-protocol": "^3.13.0"
+    "bedrock-protocol": "^3.58.2",
+    "minecraft-protocol": "^1.66.2",
+    "protodef": "^1.19.0"
   }
 }
