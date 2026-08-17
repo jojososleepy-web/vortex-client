@@ -1,0 +1,107 @@
+═══════════════════════════════════════════════════════
+    JOJO'S TEXTURE PACKS - INSTALLATION GUIDE
+═══════════════════════════════════════════════════════
+
+📦 YOU DOWNLOADED: Jojo's Texture Pack
+
+══════════════════════════════════════════════════════
+    INSTALLATION INSTRUCTIONS
+══════════════════════════════════════════════════════
+
+🖥️ WINDOWS 10/11 (PC):
+────────────────────────────────────────────────────
+1. Find the downloaded .mcpack file
+2. Double-click the .mcpack file
+3. Minecraft will open automatically
+4. Pack will import and show "Import Successful"
+5. Open Minecraft → Settings → Global Resources
+6. Find "Jojo's [Pack Name]"
+7. Click Activate
+
+OR manually copy to:
+C:\Users\[YourName]\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\resource_packs\
+
+
+📱 MOBILE (iOS/Android):
+────────────────────────────────────────────────────
+1. Download the .mcpack file
+2. Tap "Open with Minecraft"
+3. Pack imports automatically
+4. Go to Settings → Global Resources
+5. Activate the pack
+
+
+🎮 CONSOLE (Xbox/PlayStation):
+────────────────────────────────────────────────────
+METHOD 1 - Realms (Easiest):
+1. Create a Realm on PC with the pack
+2. Join the Realm on console
+3. Pack downloads automatically
+
+METHOD 2 - USB Transfer:
+1. Download pack on PC
+2. Extract to USB drive
+3. Plug USB into console
+4. Minecraft → Settings → Storage → Import
+5. Select pack from USB
+
+METHOD 3 - File Share:
+1. Upload to OneDrive/Dropbox
+2. Download on console browser
+3. Import to Minecraft
+
+
+══════════════════════════════════════════════════════
+    ACTIVATING THE PACK
+══════════════════════════════════════════════════════
+
+After importing:
+1. Open Minecraft
+2. Go to Settings
+3. Click "Global Resources"
+4. Find "Jojo's [Pack Name]"
+5. Click the + button to activate
+6. Move it to the TOP of the list for best results
+7. Click "Continue" or "Apply"
+
+
+══════════════════════════════════════════════════════
+    TROUBLESHOOTING
+══════════════════════════════════════════════════════
+
+❌ Pack not showing up?
+→ Make sure you're in "Global Resources" not "World Resources"
+→ Restart Minecraft
+→ Check Minecraft version (requires 1.16+)
+
+❌ "Import Failed" error?
+→ Make sure file ends with .mcpack
+→ Re-download the file
+→ Try manual installation method
+
+❌ Textures look wrong?
+→ Move pack to TOP of resource pack list
+→ Remove conflicting packs
+→ Clear cache: Settings → Storage → Clear Cache
+
+
+══════════════════════════════════════════════════════
+    SUPPORT
+══════════════════════════════════════════════════════
+
+Need help?
+🌐 Website: https://vortexproxy.online
+📧 Contact through website for support
+
+═══════════════════════════════════════════════════════
+
+✅ VERIFIED COMPATIBLE WITH:
+- Minecraft Bedrock 1.16+
+- Windows 10/11
+- iOS/Android
+- Xbox One/Series X|S
+- PlayStation 4/5
+- Nintendo Switch
+
+═══════════════════════════════════════════════════════
+Made with 💜 by Jojo

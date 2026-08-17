@@ -799,3 +799,62 @@ input:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
+/* ══════════════ PACK SHOWCASE ══════════════ */
+.pack-showcase {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pack-header {
+  margin-bottom: 2rem;
+}
+
+.pack-header h3 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, #a78bfa, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pack-header p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.pack-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+  text-align: left;
+}
+
+.feature-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+.feature-item:hover {
+  border-color: var(--accent);
+  background: var(--bg-card-hover);
+  transform: translateX(4px);
+}
+
+.pack-showcase .btn {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .pack-features {
+    grid-template-columns: 1fr;
+  }
+}

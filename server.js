@@ -253,6 +253,32 @@ app.post('/api/proxy/disconnect', (req, res) => {
   res.json({ success: true });
 });
 
+// ─── Texture pack downloads ───────────────────────────────────────────────
+const PACKS = {
+  pvp:  { file: 'Jojos_PVP_Pack.mcpack',        name: "Jojo's PvP Pack" },
+  cpvp: { file: 'Jojos_CPVP_Pack.mcpack',       name: "Jojo's CPVP Pack" },
+  fps:  { file: 'Jojos_FPS_Boost_Pack.mcpack',  name: "Jojo's FPS Boost Pack" },
+  neon: { file: 'Jojos_Neon_Pack.mcpack',       name: "Jojo's Neon Pack" }
+};
+
+app.get('/api/packs', (req, res) => {
+  res.json(Object.entries(PACKS).map(([id, p]) => ({ id, name: p.name, url: `/download/${id}` })));
+});
+
+app.get('/download/guide', (req, res) => {
+  res.download(path.join(__dirname, 'public', 'downloads', 'INSTALLATION_GUIDE.txt'));
+});
+
+app.get('/download/:pack', (req, res) => {
+  const pack = PACKS[req.params.pack];
+  if (!pack) return res.status(404).send('Pack not found');
+
+  const filePath = path.join(__dirname, 'public', 'downloads', pack.file);
+  res.download(filePath, pack.file, (err) => {
+    if (err && !res.headersSent) res.status(404).send('Pack file missing');
+  });
+});
+
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', version: '1.0.0' });
